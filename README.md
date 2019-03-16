@@ -1,6 +1,6 @@
 # MotherNature
 Fem Dev Meetup <br>
-Game Jam 13. & 14.4.2019, Cologne <br>
+Game Jam 16. & 17.4.2019, Cologne <br>
 Theme: MotherNature 
 
 # Note
