@@ -1,5 +1,7 @@
 # MotherNature
-FemDevMeetup, GameJam 13.4.2019, Theme: MotherNature
+FemDevMeetup <br>
+GameJam 13.4.2019 <br>
+Theme: MotherNature 
 
 # Note
 NEVER push directly to master ;)
