@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Earth.cs" />
     <Compile Include="Assets\Scripts\EarthSpin.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/lotteunckell/Uni/FemDevMeetup_04_2019/MotherNature/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

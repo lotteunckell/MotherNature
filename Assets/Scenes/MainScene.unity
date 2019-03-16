@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 1411685204}
   - component: {fileID: 1411685203}
   - component: {fileID: 1411685207}
+  - component: {fileID: 1411685208}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -373,3 +374,21 @@ MonoBehaviour:
   clockwise: 1
   direction: 1
   directionChangeSpeed: 2
+--- !u!114 &1411685208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411685202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd3791a04bb444779bbde9c9479d6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climate: 0
+  water: 0
+  co2: 0
+  age: 0
+  nextActionIn: 0
+  period: 10
