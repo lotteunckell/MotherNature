@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 public class Earth : MonoBehaviour
 {
@@ -11,42 +10,42 @@ public class Earth : MonoBehaviour
     public long age;
 
     //helpers for stat updating
-    private float nextActionIn = 0.0f;
-    public float statsUpdateSpeed = 30;
+    private float nextActionInHumidity = 0.0f;
+    private float nextActionInTemperature = 0.0f;
+    private float nextActionInPollution = 0.0f;
+    public float pollutionUpdateSpeed = 30; //speed in sek
 
     //helpers for age updating
     private float yearIncreaseIn = 0.0f;
-    public float ageUpdateSpeed = 1;
+    public float ageUpdateSpeed = 1; //speed in sek
+
+    //helpers for humidity and temperature updating
+    private GameObject sun;
+    public int statChangeSpeed = 30; //speed in sek
+    public int distanceChangedBy;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         humidity = 50;
-        pollution = 50;
+        pollution = 0;
         temperature = 50;
         age = 0;
+        sun = GameObject.Find("Sun");
+        distanceChangedBy = 0;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        updateScores();
         updateAge();
+        updateHumidity();
+        updateTemperature();
+        updatePollution();
+        normalizePercent();
     }
 
-    void updateScores()
-    {
-        if (Time.time > nextActionIn)
-        {
-            nextActionIn += statsUpdateSpeed;
-            humidity += 1;
-            pollution -= 1;
-            temperature += 1;
-            normalizePercent();
-        }
-    }
-
-    void updateAge()
+    private void updateAge()
     {
         if (Time.time > yearIncreaseIn)
         {
@@ -55,7 +54,47 @@ public class Earth : MonoBehaviour
         }
     }
 
-    void normalizePercent()
+    private void updateHumidity()
+    {
+        if (Time.time > nextActionInHumidity)
+        {
+            //wann die humidity sinkt hängt von dem Abstand zur Sonne ab
+            nextActionInHumidity += statChangeSpeed - distanceChangedBy;
+            humidity -= 1;
+        }
+    }
+
+    private void updateTemperature()
+    {
+        if (Time.time > nextActionInTemperature)
+        {
+            //wann die temperature steigt hängt von dem Abstand zur Sonne ab
+            nextActionInTemperature += statChangeSpeed - distanceChangedBy;
+            temperature += 1;
+        }
+    }
+
+    private void updatePollution()
+    {
+        if (Time.time > nextActionInPollution)
+        {
+            if (pollution <= 40)
+            {
+                nextActionInPollution += pollutionUpdateSpeed*2;
+            }
+            else if (pollution <= 80)
+            {
+                nextActionInPollution += pollutionUpdateSpeed;
+            }
+            else
+            {
+                nextActionInPollution += pollutionUpdateSpeed/2;
+            }
+            pollution += 1;
+        }
+    }
+
+    private void normalizePercent()
     {
         if (humidity > 100)
         {
