@@ -13,3 +13,11 @@ NEVER push directly to master ;)
   2. Adding: ```git add -a```
   3. Committing: ```git commit -m "<message>"```
   4. Pushing to GitHub: ```git push origin <branch_name>```
+
+# GoogleDocs
+https://drive.google.com/open?id=1wwjbPBRoD1bYjfveZKdAvUM9PLAL8Yd75e_uMR6-eJ4
+
+# Possible Future ToDos
+* Factory Feature
+* Skins, Assets and Sounds
+* Gestures for Gameplay Buttons
