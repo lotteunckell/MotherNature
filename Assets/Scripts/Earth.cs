@@ -8,6 +8,10 @@ public class Earth : MonoBehaviour
     private float startTime;
     private float timeSpendInMenu;
     private float elapsedTime;
+    public GameObject sun;
+    public GameObject pauseMenu;
+    public GameObject gpButtons;
+    public GameObject gpButtons2;
 
     //earth's stats
     public int humidity;
@@ -26,9 +30,13 @@ public class Earth : MonoBehaviour
     public float ageUpdateSpeed = 1; //speed in sek
 
     //helpers for humidity and temperature updating
-    private GameObject sun;
     public int statChangeSpeed = 30; //speed in sek
     public int distanceChangedBy;
+
+    //fixers (buttons)
+    public int oneWaterIncrease = 15;
+    public int oneTemperatureFix = 15;
+    public int onePollutioDecrease = 15;
 
     // Start is called before the first frame update
     private void Start()
@@ -39,7 +47,6 @@ public class Earth : MonoBehaviour
         pollution = 0;
         temperature = 50;
         age = 0;
-        sun = GameObject.Find("Sun");
         distanceChangedBy = 0;
     }
 
@@ -47,7 +54,7 @@ public class Earth : MonoBehaviour
     private void Update()
     {
         if (!running) timeSpendInMenu = Time.time - startTime;
-        if (running) 
+        if (running)
         {
             elapsedTime = Time.time - timeSpendInMenu;
             updateAge();
@@ -55,6 +62,12 @@ public class Earth : MonoBehaviour
             updateTemperature();
             updatePollution();
             normalizePercent();
+        }
+        if (Input.GetKeyDown("escape"))
+        {
+            pauseMenu.SetActive(true);
+            gpButtons.SetActive(false);
+            gpButtons2.SetActive(false);
         }
     }
 
@@ -138,5 +151,36 @@ public class Earth : MonoBehaviour
     public void runningNow()
     {
         running = true;
+    }
+
+    public void waterIncrease()
+    {
+        humidity += oneWaterIncrease;
+    }
+
+    public void temperatureFixUp()
+    {
+        temperature += oneTemperatureFix;
+    }
+
+    public void temperatureFixDown()
+    {
+        temperature -= oneTemperatureFix;
+    }
+
+    public void factoryRemoval()
+    {
+
+    }
+
+    public void pollutioDecrease()
+    {
+        pollution -= onePollutioDecrease;
+    }
+
+    public void quit()
+    {
+        Application.Quit();
+        Debug.Log("Game is exiting");
     }
 }
