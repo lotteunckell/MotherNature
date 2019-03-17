@@ -1211,8 +1211,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1411685208}
-        m_MethodName: SendMessage
-        m_Mode: 5
+        m_MethodName: temperatureFixUp
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2430,8 +2430,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1411685208}
-        m_MethodName: SendMessage
-        m_Mode: 5
+        m_MethodName: temperatureFixDown
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3962,6 +3962,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1306844914}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1203712292
@@ -4331,7 +4342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &1411685203
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4399,7 +4410,7 @@ Transform:
   m_GameObject: {fileID: 1411685202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -4770,6 +4781,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1380160220}
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1411685208}
+        m_MethodName: quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5606,35 +5628,6 @@ MonoBehaviour:
   clockwise: 1
   direction: 1
   directionChangeSpeed: 2
---- !u!114 &1753717285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753717283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b13620b4a998648959048dfaa3a05c39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sun: {fileID: 1898384353}
-  pauseMenu: {fileID: 1782486869}
-  gpButtons: {fileID: 871162572}
-  gpButtons2: {fileID: 667524123}
-  gameOver: {fileID: 1306844914}
-  stats: {fileID: 1160337554}
-  humidity: 0
-  pollution: 0
-  temperature: 0
-  age: 0
-  pollutionUpdateSpeed: 15
-  ageUpdateSpeed: 1
-  statChangeSpeed: 30
-  distanceChangedBy: 0
-  oneWaterIncrease: 15
-  oneTemperatureFix: 15
-  onePollutioDecrease: 15
 --- !u!4 &1753717286 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 3fce540419ee71947a1b66d0cf918aa6,
@@ -6326,8 +6319,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1411685208}
-        m_MethodName: SendMessage
-        m_Mode: 5
+        m_MethodName: waterIncrease
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
