@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class Earth : MonoBehaviour
@@ -14,6 +15,7 @@ public class Earth : MonoBehaviour
     public GameObject gpButtons;
     public GameObject gpButtons2;
     public GameObject gameOver;
+    public Text stats;
 
     //earth's stats
     public int humidity;
@@ -56,6 +58,7 @@ public class Earth : MonoBehaviour
         temperature = 50;
         age = 0;
         distanceChangedBy = 0;
+        updateStats();
     }
 
     // Update is called once per frame
@@ -98,6 +101,7 @@ public class Earth : MonoBehaviour
             gpButtons.SetActive(false);
             gpButtons2.SetActive(false);
         }
+        updateStats();
     }
 
     private void updateAge()
@@ -217,5 +221,10 @@ public class Earth : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Game is exiting");
+    }
+
+    public void updateStats()
+    {
+        stats.text = " Humidity: " + humidity.ToString() + "\n Pollution: " + pollution.ToString() + "\n Temperature: " + temperature.ToString() + "\n Age: " + age.ToString();
     }
 }
