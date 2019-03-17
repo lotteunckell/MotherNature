@@ -30,6 +30,11 @@ public class Earth : MonoBehaviour
     public int statChangeSpeed = 30; //speed in sek
     public int distanceChangedBy;
 
+    //fixers (buttons)
+    public int oneWaterIncrease = 15;
+    public int oneTemperatureFix = 15;
+    public int onePollutioDecrease = 15;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -138,5 +143,30 @@ public class Earth : MonoBehaviour
     public void runningNow()
     {
         running = true;
+    }
+
+    public void waterIncrease()
+    {
+        humidity += oneWaterIncrease;
+    }
+
+    public void temperatureFixUp()
+    {
+        temperature += oneTemperatureFix;
+    }
+
+    public void temperatureFixDown()
+    {
+        temperature -= oneTemperatureFix;
+    }
+
+    public void factoryRemoval()
+    {
+
+    }
+
+    public void pollutioDecrease()
+    {
+        pollution -= onePollutioDecrease;
     }
 }
