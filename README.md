@@ -18,6 +18,6 @@ NEVER push directly to master ;)
 https://drive.google.com/open?id=1wwjbPBRoD1bYjfveZKdAvUM9PLAL8Yd75e_uMR6-eJ4
 
 # Possible Future ToDos
-* Factory Feature
+* let Factories and Trees spawn
 * Skins, Assets and Sounds
 * Gestures for Gameplay Buttons
