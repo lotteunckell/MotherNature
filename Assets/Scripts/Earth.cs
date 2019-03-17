@@ -3,6 +3,12 @@ using System;
 
 public class Earth : MonoBehaviour
 {
+
+    private bool running;
+    private float startTime;
+    private float timeSpendInMenu;
+    private float elapsedTime;
+
     //earth's stats
     public int humidity;
     public int pollution;
@@ -27,6 +33,8 @@ public class Earth : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        startTime = Time.time;
+        running = false;
         humidity = 50;
         pollution = 0;
         temperature = 50;
@@ -38,16 +46,21 @@ public class Earth : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        updateAge();
-        updateHumidity();
-        updateTemperature();
-        updatePollution();
-        normalizePercent();
+        if (!running) timeSpendInMenu = Time.time - startTime;
+        if (running) 
+        {
+            elapsedTime = Time.time - timeSpendInMenu;
+            updateAge();
+            updateHumidity();
+            updateTemperature();
+            updatePollution();
+            normalizePercent();
+        }
     }
 
     private void updateAge()
     {
-        if (Time.time > yearIncreaseIn)
+        if (elapsedTime > yearIncreaseIn)
         {
             yearIncreaseIn += ageUpdateSpeed;
             age += 1;
@@ -56,7 +69,7 @@ public class Earth : MonoBehaviour
 
     private void updateHumidity()
     {
-        if (Time.time > nextActionInHumidity)
+        if (elapsedTime > nextActionInHumidity)
         {
             //wann die humidity sinkt hängt von dem Abstand zur Sonne ab
             nextActionInHumidity += statChangeSpeed - distanceChangedBy;
@@ -66,7 +79,7 @@ public class Earth : MonoBehaviour
 
     private void updateTemperature()
     {
-        if (Time.time > nextActionInTemperature)
+        if (elapsedTime > nextActionInTemperature)
         {
             //wann die temperature steigt hängt von dem Abstand zur Sonne ab
             nextActionInTemperature += statChangeSpeed - distanceChangedBy;
@@ -76,7 +89,7 @@ public class Earth : MonoBehaviour
 
     private void updatePollution()
     {
-        if (Time.time > nextActionInPollution)
+        if (elapsedTime > nextActionInPollution)
         {
             if (pollution <= 40)
             {
@@ -120,5 +133,10 @@ public class Earth : MonoBehaviour
         {
             temperature = 0;
         }
+    }
+
+    public void runningNow()
+    {
+        running = true;
     }
 }
