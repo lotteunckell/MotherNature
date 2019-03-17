@@ -41,9 +41,9 @@ public class Earth : MonoBehaviour
     public int onePollutioDecrease = 15;
 
     // watering pot
-    public Transform spawnPoint;
-    public GameObject wateringPot;
-    public float wPotLifetime = 5f;
+    //public Transform spawnPoint;
+    //public GameObject wateringPot;
+    //public float wPotLifetime = 5f;
 
     // Start is called before the first frame update
     private void Start()
@@ -77,14 +77,14 @@ public class Earth : MonoBehaviour
             gpButtons.SetActive(false);
             gpButtons2.SetActive(false);
         }
-        if (wPotLifetime > 0)
-        {
-            wPotLifetime -= Time.deltaTime;
-            if (wPotLifetime <= 0)
-            {
-                Destruction();
-            }
-        }
+        //if (wPotLifetime > 0)
+        //{
+        //    wPotLifetime -= Time.deltaTime;
+        //    if (wPotLifetime <= 0)
+        //    {
+        //        Destruction();
+        //    }
+        //}
         if (humidity >= 100 || humidity <= 0
                 || pollution >= 100 || temperature >= 100
                 || temperature <= 0)
@@ -185,12 +185,12 @@ public class Earth : MonoBehaviour
     public void waterIncrease()
     {
         humidity += oneWaterIncrease;
-        Instantiate(wateringPot, spawnPoint.position, spawnPoint.rotation);
+        //Instantiate(wateringPot, spawnPoint.position, spawnPoint.rotation);
     }
 
     private void Destruction()
     {
-        Destroy(wateringPot.gameObject);
+        //Destroy(wateringPot.gameObject);
     }
 
     public void temperatureFixUp()
