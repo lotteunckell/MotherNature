@@ -2919,7 +2919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1380160220
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2931,7 +2931,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a3ae61d401151499da93f2d71b8baac0, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3044,6 +3044,7 @@ GameObject:
   - component: {fileID: 1411685203}
   - component: {fileID: 1411685207}
   - component: {fileID: 1411685208}
+  - component: {fileID: 1411685209}
   m_Layer: 0
   m_Name: Earth
   m_TagString: Untagged
@@ -3157,6 +3158,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 1782486869}
   gpButtons: {fileID: 871162572}
   gpButtons2: {fileID: 667524123}
+  gameOver: {fileID: 0}
   humidity: 0
   pollution: 0
   temperature: 0
@@ -3168,6 +3170,21 @@ MonoBehaviour:
   oneWaterIncrease: 15
   oneTemperatureFix: 15
   onePollutioDecrease: 15
+  spawnPoint: {fileID: 0}
+  wateringPot: {fileID: 0}
+  wPotLifetime: 5
+--- !u!114 &1411685209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411685202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1c5970e7e144ba69de30b94b893d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1503183331
 GameObject:
   m_ObjectHideFlags: 0

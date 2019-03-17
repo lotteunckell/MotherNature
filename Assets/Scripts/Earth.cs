@@ -5,6 +5,7 @@ public class Earth : MonoBehaviour
 {
 
     private bool running;
+    private bool dead;
     private float startTime;
     private float timeSpendInMenu;
     private float elapsedTime;
@@ -12,6 +13,7 @@ public class Earth : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject gpButtons;
     public GameObject gpButtons2;
+    public GameObject gameOver;
 
     //earth's stats
     public int humidity;
@@ -38,11 +40,17 @@ public class Earth : MonoBehaviour
     public int oneTemperatureFix = 15;
     public int onePollutioDecrease = 15;
 
+    // watering pot
+    public Transform spawnPoint;
+    public GameObject wateringPot;
+    public float wPotLifetime = 5f;
+
     // Start is called before the first frame update
     private void Start()
     {
         startTime = Time.time;
         running = false;
+        dead = false;
         humidity = 50;
         pollution = 0;
         temperature = 50;
@@ -66,6 +74,27 @@ public class Earth : MonoBehaviour
         if (Input.GetKeyDown("escape"))
         {
             pauseMenu.SetActive(true);
+            gpButtons.SetActive(false);
+            gpButtons2.SetActive(false);
+        }
+        if (wPotLifetime > 0)
+        {
+            wPotLifetime -= Time.deltaTime;
+            if (wPotLifetime <= 0)
+            {
+                Destruction();
+            }
+        }
+        if (humidity >= 100 || humidity <= 0
+                || pollution >= 100 || temperature >= 100
+                || temperature <= 0)
+        {
+            dead = true;
+            Debug.Log("Died");
+        }
+        if (dead)
+        {        
+            gameOver.SetActive(true);  
             gpButtons.SetActive(false);
             gpButtons2.SetActive(false);
         }
@@ -156,6 +185,12 @@ public class Earth : MonoBehaviour
     public void waterIncrease()
     {
         humidity += oneWaterIncrease;
+        Instantiate(wateringPot, spawnPoint.position, spawnPoint.rotation);
+    }
+
+    private void Destruction()
+    {
+        Destroy(wateringPot.gameObject);
     }
 
     public void temperatureFixUp()
@@ -170,7 +205,7 @@ public class Earth : MonoBehaviour
 
     public void factoryRemoval()
     {
-
+        //TBD
     }
 
     public void pollutioDecrease()
